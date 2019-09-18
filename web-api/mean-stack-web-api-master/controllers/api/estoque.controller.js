@@ -28,7 +28,7 @@ function getEstoque(req, res){
 }
 
 function updateItem(req, res){
-    estoqueService.updateItem(req.params.itemId)
+    estoqueService.updateItem(req.params._id, req.body)
     .then(function(){
         res.send("Success");
     }).catch(function(){
@@ -37,7 +37,7 @@ function updateItem(req, res){
 }
 
 function deleteItem(req, res){
-    estoqueService.deleteItem(req.params.itemId)
+    estoqueService.deleteItem(req.params._id)
     .then(function(){
         res.send("Success");
     }).catch(function(){
