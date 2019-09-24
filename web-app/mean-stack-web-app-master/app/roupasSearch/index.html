@@ -23,22 +23,22 @@
 </style>
 
 <h1>Estoque De Roupas - Pesquisa</h1>
-<div class="form-container" ng-init="initController();">
+<div class="form-container">
   <h2>Filtros</h2>  
   <div class="row padding-bottom-5">
     <div class="col-sm-4">
-        <input type="text" class="form-control" placeholder="Código do Item" ng-model="vm.item.Code">
+        <input type="text" class="form-control" placeholder="Código do Item" ng-model="vm.filter.Code">
     </div>
     <div class="col-sm-4">
-        <input type="text" class="form-control" placeholder="Marca" ng-model="vm.item.Marca">
+        <input type="text" class="form-control" placeholder="Marca" ng-model="vm.filter.Marca">
     </div>
     <div class="col-sm-4">
-        <input type="text" class="form-control" placeholder="Característica" ng-model="vm.item.Caracteristicas">
+        <input type="text" class="form-control" placeholder="Característica" ng-model="vm.filter.Caracteristicas">
     </div>
   </div>
   <div class="row padding-bottom-5">
     <div class="col-sm-5">
-        <select name="Tipo" class="form-control" ng-model="vm.item.Tipo" placeholder="Tipo">
+        <select name="Tipo" class="form-control" ng-model="vm.filter.Tipo" placeholder="Tipo">
             <option value="tipo1">Calça</option> 
             <option value="tipo2">Camisa</option>
             <option value="tipo3">Camiseta</option>
@@ -48,7 +48,7 @@
           </select>
     </div>
     <div class="col-sm-5">
-        <select name="Tipo" class="form-control" ng-model="vm.item.Tipo" placeholder="Tipo">
+        <select name="Tipo" class="form-control" ng-model="vm.filter.Tipo" placeholder="Tipo">
             <option style="color: white" value="cor1">Branco</option> 
             <option style="color: blue" value="cor2">Azul</option>
             <option style="color: green" value="cor3">Verde</option>
@@ -61,13 +61,16 @@
           </select>
     </div>
     <div class="col-sm-2">
-        <input type="text" class="form-control" placeholder="Tamanho" ng-model="vm.item.Tamanho">
+        <input type="text" class="form-control" placeholder="Tamanho" ng-model="vm.filter.Tamanho">
     </div>
   </div>
   </hr>
   <div class="row">
     <div class="col-sm-1"  >
-        <button type="submit" class="btn btn-primary" ng-click="vm.saveRoupas()">Pesquisar</button>
+        <button type="submit" class="btn btn-primary" ng-click="vm.listRoupas()">Pesquisar</button>
+    </div> 
+    <div class="col-sm-1"  >
+        <a type="submit" class="btn btn-primary" ui-sref="roupas">+ Novo</a>
     </div> 
   </div>
   </hr> 
@@ -93,7 +96,7 @@
            <li ng-repeat="item in vm.lista">
                 <div class="row">
                     <div class="col-sm-3">
-                        <label class="text-caption">item.Code</label>
+                        <a class="text-caption" ui-sref="roupas/#item.Code" >item.Code</a>
                     </div>
                     <div class="col-sm-3">
                         <label class="text-caption">item.Tipo</label>

@@ -11,14 +11,14 @@
         vm.item.Data ="";
         vm.item.ValorMargem = "";
         
+        vm.filter={};
+        vm.Lista = []
 
-        vm.saveRoupas = function() {
+        vm.listRoupas = function() {
             vm.item.Data = Date.now();
             vm.item.ValorMargem = vm.item.ValorPago*2;
-            RoupasService.Create(vm.item).then(function () {
-                FlashService.Success('question created');
-                vm.IsEdit = true;
-                vm.listQuestion();
+            RoupasService.List(vm.filter).then(function (response) {
+                vm.Lista = response;
             })
         }
 

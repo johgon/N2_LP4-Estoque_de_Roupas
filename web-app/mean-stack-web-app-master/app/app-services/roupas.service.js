@@ -19,15 +19,15 @@
         }
 
         function List(perguntas) {
-            return $http.get('/api/estoque/list', perguntas).then(handleSuccess, handleError);
+            return $http.get(apiURL + "/List" , perguntas).then(handleSuccess, handleError);
         }
 
         function Delete(_id) {
-            return $http.delete('/api/estoque/' + _id).then(handleSuccess, handleError);
+            return $http.delete(apiURL + "/delete/" + _id).then(handleSuccess, handleError);
         }
 
         function Update(roupa) {
-            return $http.put('/api/estoque/' + roupa._id, roupa).then(handleSuccess, handleError);
+            return $http.put(apiURL + "/update/" + roupa._id, roupa).then(handleSuccess, handleError);
         }
 
         function handleSuccess(res) {
