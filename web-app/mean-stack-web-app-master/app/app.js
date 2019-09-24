@@ -18,28 +18,32 @@
                 controllerAs: 'vm',
                 data: { activeTab: 'home' }
             })
-            .state('account', {
-                url: '/account',
-                templateUrl: 'account/index.html',
-                controller: 'Account.IndexController',
+            .state('roupas', {
+                url: '/',
+                templateUrl: 'roupas/index.html',
+                controller: 'Roupas.IndexController',
                 controllerAs: 'vm',
-                data: { activeTab: 'account' }
-            });
+                data: { activeTab: 'roupas' }
+            })          
     }
 
     function run($http, $rootScope, $window) {
-        // get JWT token from server
-        $.get('/app/token', function (token) {
-            // add JWT token as default auth header
-            $http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            // update active tab on state change
-            $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-                $rootScope.activeTab = toState.data.activeTab;
-            });
+        // add JWT token as default auth header
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + $window.jwtToken;
+
+        // update active tab on state change
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            $rootScope.activeTab = toState.data.activeTab;
         });
     }
 
+    // manually bootstrap angular after the JWT token is retrieved from the server
     $(function () {
-        angular.bootstrap(document, ['app']);
+        // get JWT token from server
+        $.get('/app/token', function (token) {
+            window.jwtToken = token;
+
+            angular.bootstrap(document, ['app']);
+        });
     });
 })();

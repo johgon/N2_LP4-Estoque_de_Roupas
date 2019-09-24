@@ -1,0 +1,112 @@
+﻿
+<style>
+.text-caption {
+    font-size: 13px;
+    color: #757575;
+}
+.text-simple {
+    font-size: 14px;
+    color: #000000;
+}
+.padding-left-39 {
+    padding-left: 39px;
+}
+
+.padding-bottom-10 {
+    padding-bottom: 10px;
+}
+
+.padding-bottom-5 {
+    padding-bottom: 5px;
+}
+
+</style>
+
+<h1>Estoque De Roupas - Pesquisa</h1>
+<div class="form-container" ng-init="initController();">
+  <h2>Filtros</h2>  
+  <div class="row padding-bottom-5">
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="Código do Item" ng-model="vm.item.Code">
+    </div>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="Marca" ng-model="vm.item.Marca">
+    </div>
+    <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="Característica" ng-model="vm.item.Caracteristicas">
+    </div>
+  </div>
+  <div class="row padding-bottom-5">
+    <div class="col-sm-5">
+        <select name="Tipo" class="form-control" ng-model="vm.item.Tipo" placeholder="Tipo">
+            <option value="tipo1">Calça</option> 
+            <option value="tipo2">Camisa</option>
+            <option value="tipo3">Camiseta</option>
+            <option value="tipo4">Blusa</option> 
+            <option value="tipo5">Sapato</option>
+            <option value="tipo6">Chapéu</option>
+          </select>
+    </div>
+    <div class="col-sm-5">
+        <select name="Tipo" class="form-control" ng-model="vm.item.Tipo" placeholder="Tipo">
+            <option style="color: white" value="cor1">Branco</option> 
+            <option style="color: blue" value="cor2">Azul</option>
+            <option style="color: green" value="cor3">Verde</option>
+            <option style="color: yellow" value="cor4">Amarelo</option> 
+            <option style="color: orange" value="cor5">Laranja</option>
+            <option style="color: red" value="cor6">Vermelho</option>
+            <option style="color: purple" value="cor4">Roxo</option> 
+            <option style="color: gray" value="cor5">Cinza</option>
+            <option style="color: black" value="cor6">Preto</option>
+          </select>
+    </div>
+    <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="Tamanho" ng-model="vm.item.Tamanho">
+    </div>
+  </div>
+  </hr>
+  <div class="row">
+    <div class="col-sm-1"  >
+        <button type="submit" class="btn btn-primary" ng-click="vm.saveRoupas()">Pesquisar</button>
+    </div> 
+  </div>
+  </hr> 
+  <div class="row">
+    <div class="col-sm-12">
+        <ul>
+           <li>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="text-caption">Código</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">Tipo</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">Marca</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">Cor</label>
+                    </div>
+                </div>
+           </li>
+           <li ng-repeat="item in vm.lista">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="text-caption">item.Code</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">item.Tipo</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">item.Marca</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="text-caption">item.Cor</label>
+                    </div>
+                </div>
+           </li> 
+        </ul>
+    </div>
+  </div> 
+</div>
