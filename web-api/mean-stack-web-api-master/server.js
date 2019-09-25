@@ -37,7 +37,7 @@ api.use('/api', expressJwt({ secret: config.secret }).unless({ path: ['/api/user
 // Aqui o mapemanto das rotas da aplicação. Todos esses mapeamentos fazem parte da aplicação
 // A cada require, o js é inicializado
 api.use('/api/users', require('./controllers/api/users.controller'));
-
+api.use('/api/estoque', require('./controllers/api/estoque.controller'));
 // start server API
 var serverAPI = api.listen(apiPort, function () {
     console.log('Server API listening at http://' + serverAPI.address().address + ':' + serverAPI.address().port);

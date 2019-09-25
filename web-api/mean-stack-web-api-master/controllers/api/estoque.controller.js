@@ -4,43 +4,45 @@ var router = express.Router();
 var estoqueService = require('services/estoque.service');
 
 // routes
-router.post('/createItem', createItem);
-router.get('/:_itemID', getEstoque);
+router.post('/create', create);
+router.get('/List', list);
 router.put('/:_itemID', updateItem);
 router.delete('/:_itemID', deleteItem);
 
-function createItem(req, res){
-    estoqueService.createItem(req.body)
+module.exports = router;
+
+function create(req, res){
+    estoqueService.create(req.body)
     .then(function(){
-        res.send("Success");
+        res.send(200);
     }).catch(function(){
-        res.send("Error");
+        res.send(400).send(err);
     });
 }
 
-function getEstoque(req, res){
-    estoqueService.getEstoque(req.params)
-    .then(function(){
-        res.send("Success");
+function list(req, res){
+    estoqueService.list()
+    .then(function(itens){
+        res.status(200).send(itens);
     }).catch(function(){
-        res.send("Error");
+        res.send(400).send(err);
     });
 }
 
 function updateItem(req, res){
     estoqueService.updateItem(req.params._id, req.body)
     .then(function(){
-        res.send("Success");
+        res.send(200);
     }).catch(function(){
-        res.send("Error");
+        res.send(400).send(err);
     });
 }
 
 function deleteItem(req, res){
-    estoqueService.deleteItem(req.params._id)
+    estoqueService.delete(req.params)
     .then(function(){
-        res.send("Success");
+        res.send(200);
     }).catch(function(){
-        res.send("Error");
+        res.send(400).send(err);
     });
 }
