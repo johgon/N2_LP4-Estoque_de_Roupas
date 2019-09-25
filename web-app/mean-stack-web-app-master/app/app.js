@@ -24,7 +24,29 @@
                 controller: 'Roupas.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'roupas' }
-            })          
+            })
+            .state('roupasSearch', {
+                url: '/',
+                templateUrl: 'roupasSearch/index.html',
+                controller: 'RoupasSearch.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'roupas' }
+            })
+            .state('account', {
+                url: '/',
+                templateUrl: 'account/index.html',
+                controller: 'Account.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'account' }
+            })   
+            .state('roupasEdit', {
+                url: '/:id',
+                templateUrl: 'roupas/index.html',
+                controller: 'Roupas.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'roupas' }
+            })
+            
     }
 
     function run($http, $rootScope, $window) {
